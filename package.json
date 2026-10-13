@@ -1,0 +1,64 @@
+{
+  "name": "xu-language",
+  "displayName": "Xu Language Support",
+  "description": "Syntax highlighting for the Xu programming language (.xu) — a GC-free systems language with V-style syntax, Rust-style ownership and Go-style tooling.",
+  "version": "0.2.7",
+  "publisher": "xu-lang",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "xu",
+    "language",
+    "syntax",
+    "highlighting"
+  ],
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xulang-org/vscode"
+  },
+  "contributes": {
+    "configuration": {
+      "title": "Xu",
+      "properties": {
+        "xu.languageServerPath": {
+          "type": "string",
+          "default": "xu",
+          "description": "Path to the Xu compiler binary; run as `xu lsp` for diagnostics (M196)."
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "xu",
+        "aliases": [
+          "Xu",
+          "xu"
+        ],
+        "extensions": [
+          ".xu"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "xu",
+        "scopeName": "source.xu",
+        "path": "./syntaxes/xu.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.2.0"
+  },
+  "homepage": "https://xulang.org"
+}

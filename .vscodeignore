@@ -1,0 +1,9 @@
+**
+!package.json
+!README.md
+!LSP.md
+!language-configuration.json
+!syntaxes/
+!syntaxes/**
+!images/
+!images/**
