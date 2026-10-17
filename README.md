@@ -6,7 +6,7 @@ Syntax highlighting for the **Xu** programming language (`.xu`). TextMate
 grammar plus basic editor configuration (comments, brackets, auto-closing
 pairs).
 
-本扩展在独立 `vscode` 仓库维护，打包无需 Xu 编译器源码。与 `xu` 放在
+本扩展在独立 `vscode-xu` 仓库维护，打包无需 Xu 编译器源码。与 `xu` 放在
 同一父目录时，Xu 的安装和打包入口会自动发现它；其他位置可通过
 `XU_VSCODE_ROOT` 指定。扩展使用独立的 `package.json` 版本。
 
@@ -43,7 +43,7 @@ pairs).
 符号链接在 Cursor 里经常不生效；请用真实安装：
 
 ```bash
-cd vscode
+cd vscode-xu
 npm ci
 npm run package
 cursor --install-extension xu-language-*.vsix --force   # Cursor
