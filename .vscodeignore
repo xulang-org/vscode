@@ -2,8 +2,11 @@
 !package.json
 !README.md
 !LSP.md
+!LICENSE
 !language-configuration.json
 !syntaxes/
 !syntaxes/**
 !images/
 !images/**
+!dist/
+!dist/**

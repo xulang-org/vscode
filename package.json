@@ -1,13 +1,17 @@
 {
   "name": "xu-language",
   "displayName": "Xu Language Support",
-  "description": "Syntax highlighting for the Xu programming language (.xu) — a GC-free systems language with V-style syntax, Rust-style ownership and Go-style tooling.",
-  "version": "0.2.7",
+  "description": "Language support and LSP integration for the Xu programming language (.xu) — syntax highlighting, diagnostics, hover, definition, completion, formatting, and symbols.",
+  "version": "0.3.0",
   "publisher": "xu-lang",
   "license": "MIT",
   "engines": {
-    "vscode": "^1.75.0"
+    "vscode": "^1.91.0"
   },
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onLanguage:xu"
+  ],
   "categories": [
     "Programming Languages"
   ],
@@ -15,7 +19,9 @@
     "xu",
     "language",
     "syntax",
-    "highlighting"
+    "highlighting",
+    "lsp",
+    "diagnostics"
   ],
   "icon": "images/icon.png",
   "repository": {
@@ -23,13 +29,25 @@
     "url": "https://github.com/xulang-org/vscode-xu"
   },
   "contributes": {
+    "commands": [
+      {
+        "command": "xu.restartServer",
+        "title": "Xu: Restart Language Server",
+        "category": "Xu"
+      },
+      {
+        "command": "xu.showOutput",
+        "title": "Xu: Show Language Server Output",
+        "category": "Xu"
+      }
+    ],
     "configuration": {
       "title": "Xu",
       "properties": {
         "xu.languageServerPath": {
           "type": "string",
           "default": "xu",
-          "description": "Path to the Xu compiler binary; run as `xu lsp` for diagnostics (M196)."
+          "description": "Path to the Xu compiler binary; run as `xu lsp` for diagnostics, hover, and definition."
         }
       }
     },
@@ -55,10 +73,19 @@
     ]
   },
   "scripts": {
-    "package": "vsce package --no-dependencies"
+    "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "watch": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --watch",
+    "package": "npm run build && vsce package --no-dependencies"
   },
   "devDependencies": {
-    "@vscode/vsce": "^3.2.0"
+    "@types/node": "^26.6.5",
+    "@types/vscode": "1.91.0",
+    "@vscode/vsce": "^3.2.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
   },
-  "homepage": "https://xulang.org"
+  "homepage": "https://xulang.org",
+  "dependencies": {
+    "vscode-languageclient": "^10.1.2"
+  }
 }

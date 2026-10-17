@@ -10,8 +10,7 @@ pairs).
 同一父目录时，Xu 的安装和打包入口会自动发现它；其他位置可通过
 `XU_VSCODE_ROOT` 指定。扩展使用独立的 `package.json` 版本。
 
-> Highlighting only — no language server in this package. Use `xu check` /
-> `xu lsp` for diagnostics.
+> **内置原生 LSP 服务端支持**：扩展内置与 `xu lsp` 服务端直连的客户端，开箱即用支持实时语法与类型诊断、代码补全、跳转定义、文档悬停、文档符号大纲、代码引用查找、重命名重构与自动格式化。详见 [LSP.md](file:///Users/nouo/github/xulang-org/vscode-xu/LSP.md)。
 
 ## Features (aligned with Gen1 lexer)
 
