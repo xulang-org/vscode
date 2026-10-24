@@ -2,6 +2,8 @@
 
 请遵守 [XU GitHub 仓库管理规范](https://github.com/xulang-org/xulang-org/blob/main/.github/REPOSITORY_RULES.md)。日常任务从 `dev` 建分支并通过 PR 合回，正式交付进入 `main`；后台门禁按 [配置清单](https://github.com/xulang-org/xulang-org/blob/main/.github/GITHUB_SETTINGS.md) 单独启用。
 
+XU 源码还须遵守 [XU 代码规范](https://github.com/xulang-org/xu/blob/main/.github/XU_CODING_STANDARDS.md)；涉及配套语言或跨语言接口时，按各语言工具链及其中的边界契约验证。
+
 扩展版本由 `package.json` 管理，独立于 Xu SDK；扩展内容变化时同一批交付递增一次，并按需更新锁文件。仅修改贡献指南、仓库规则或模板时，不递增扩展版本。
 
 ## 修改与验证
