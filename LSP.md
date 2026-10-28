@@ -75,7 +75,7 @@ args = ["lsp"]
 
 ---
 
-## 已就绪能力列表（v0.3.0）
+## 已就绪能力列表（v0.3.1）
 
 1. **实时语法与类型诊断**：
    - 监听文档生命周期（`textDocument/didOpen`、`textDocument/didChange`、`textDocument/didSave`、`textDocument/didClose`）

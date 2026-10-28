@@ -2,15 +2,18 @@
 
 <p align="center"><img src="images/icon.png" alt="Xu" width="72" height="72"></p>
 
-Syntax highlighting for the **Xu** programming language (`.xu`). TextMate
-grammar plus basic editor configuration (comments, brackets, auto-closing
-pairs).
+Syntax highlighting and optional LSP client support for the **Xu** programming
+language (`.xu`). TextMate grammar and basic editor configuration (comments,
+brackets, auto-closing pairs) work independently of the external Xu compiler.
 
 本扩展在独立 `vscode-xu` 仓库维护，打包无需 Xu 编译器源码。与 `xu` 放在
 同一父目录时，Xu 的安装和打包入口会自动发现它；其他位置可通过
 `XU_VSCODE_ROOT` 指定。扩展使用独立的 `package.json` 版本。
 
-> **内置原生 LSP 服务端支持**：扩展内置与 `xu lsp` 服务端直连的客户端，开箱即用支持实时语法与类型诊断、代码补全、跳转定义、文档悬停、文档符号大纲、代码引用查找、重命名重构与自动格式化。详见 [LSP.md](file:///Users/nouo/github/xulang-org/vscode-xu/LSP.md)。
+> **LSP client**: The extension connects to an external Xu compiler; it does not
+> bundle the compiler or language server. In a monorepo workspace it checks
+> `xu/bin/xu` automatically. Configure `xu.languageServerPath` when the compiler
+> is elsewhere. See [LSP.md](LSP.md) for setup and supported features.
 
 ## Features (aligned with Gen1 lexer)
 

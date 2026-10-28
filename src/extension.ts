@@ -52,12 +52,16 @@ function resolveServerCommand(): { command: string; args: string[] } | undefined
   }
 
   // Auto-detection strategy:
-  // 1. Check workspace ./bin/xu or ./bin/xu-lsp
+  // 1. Check workspace and nested Xu repository binaries
   for (const folder of vscode.workspace.workspaceFolders || []) {
-    const candidates = [
-      path.join(folder.uri.fsPath, 'bin', process.platform === 'win32' ? 'xu.exe' : 'xu'),
-      path.join(folder.uri.fsPath, 'bin', process.platform === 'win32' ? 'xu-lsp.exe' : 'xu-lsp'),
+    const binNames = [
+      process.platform === 'win32' ? 'xu.exe' : 'xu',
+      process.platform === 'win32' ? 'xu-lsp.exe' : 'xu-lsp',
     ];
+    const candidates = binNames.flatMap((binName) => [
+      path.join(folder.uri.fsPath, 'bin', binName),
+      path.join(folder.uri.fsPath, 'xu', 'bin', binName),
+    ]);
     for (const cand of candidates) {
       if (fs.existsSync(cand)) {
         const base = path.basename(cand).toLowerCase();
@@ -146,6 +150,9 @@ async function startLanguageServer(context: vscode.ExtensionContext): Promise<vo
   client = new LanguageClient('xu-lsp', 'Xu Language Server', serverOptions, clientOptions);
 
   try {
+    client.outputChannel.appendLine(
+      `Starting Xu Language Server: ${resolved.command} ${resolved.args.join(' ')}`.trim()
+    );
     await client.start();
     if (statusBarItem) {
       statusBarItem.text = '$(check) Xu LSP';

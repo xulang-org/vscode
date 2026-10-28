@@ -2,7 +2,7 @@
   "name": "xu-language",
   "displayName": "Xu Language Support",
   "description": "Language support and LSP integration for the Xu programming language (.xu) — syntax highlighting, diagnostics, hover, definition, completion, formatting, and symbols.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "publisher": "xu-lang",
   "license": "MIT",
   "engines": {
