@@ -2,17 +2,20 @@
 
 <p align="center"><img src="images/icon.png" alt="Xu" width="72" height="72"></p>
 
-Syntax highlighting for the **Xu** programming language (`.xu`). TextMate
-grammar plus basic editor configuration (comments, brackets, auto-closing
-pairs).
+Language support for **Xu** (`.xu`): TextMate syntax highlighting, basic editor
+configuration (comments, brackets, auto-closing pairs), and a client for the
+external Xu language server.
 
 本扩展在独立 `vscode-xu` 仓库维护，打包无需 Xu 编译器源码。与 `xu` 放在
 同一父目录时，Xu 的安装和打包入口会自动发现它；其他位置可通过
 `XU_VSCODE_ROOT` 指定。扩展使用独立的 `package.json` 版本。
 
-> **内置原生 LSP 服务端支持**：扩展内置与 `xu lsp` 服务端直连的客户端，开箱即用支持实时语法与类型诊断、代码补全、跳转定义、文档悬停、文档符号大纲、代码引用查找、重命名重构与自动格式化。详见 [LSP.md](file:///Users/nouo/github/xulang-org/vscode-xu/LSP.md)。
+扩展内置 LSP **客户端**；语言服务由单独安装的 Xu SDK 提供，通过
+`xu lsp` 启动。请将 `xu` 加入 `PATH`，或设置 `xu.languageServerPath`。
+语法高亮和基础编辑器配置无需 SDK。诊断、格式化、补全、跳转、悬停、
+大纲、引用查询及当前文件重命名的配置与能力边界见 [LSP.md](LSP.md)。
 
-## Features (aligned with Gen1 lexer)
+## Syntax highlighting
 
 - Keywords (`src/xu/ast/kind.xu` `lookup_keyword`):
   - control: `fn if else for in while match xu select or as is let`
@@ -78,4 +81,5 @@ ln -sfn "$PWD" "$HOME/.vscode/extensions/xu-lang.xu-language-$EXTENSION_VERSION"
 
 ## License
 
-MIT
+MIT. Bundled dependencies retain their own licenses; full license texts and
+upstream notices are included in [LICENSE](LICENSE).

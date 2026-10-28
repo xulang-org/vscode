@@ -1,6 +1,7 @@
 # Xu VS Code extension
 
-This is an independent syntax-highlighting extension. Packaging must work
+This is an independent syntax-highlighting extension and external Xu LSP client.
+The language server is supplied by the Xu SDK. Packaging must work
 without a Xu compiler checkout. Extension versioning belongs to package.json
 and is independent of the Xu release VERSION; bump it once for changed extension
 content in a batch, then rebuild and inspect the current VSIX.
