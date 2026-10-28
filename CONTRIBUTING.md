@@ -17,6 +17,20 @@ npm run package
 
 修改扩展内容后检查本次版本的 VSIX：元数据、语法、编辑器配置、图标和编译后的扩展入口齐全；Git 元数据、本机配置、依赖缓存及研发记录不进入发行包。`.vscodeignore` 使用公开文件白名单；贡献指南和模板也不应意外进入扩展包。
 
+`LICENSE` 保留扩展自身的 MIT 许可，并附有 bundle 中依赖的完整许可文本和上游通知。
+可从仓库根生成构建清单，按 `outputs["dist/extension.js"].inputs` 中
+`bytesInOutput` 大于零的条目确认实际打入 bundle 的包：
+
+```sh
+mkdir -p tmp
+npm run build -- --metafile=tmp/extension-metafile.json
+```
+
+更新依赖时，按该清单核对 `node_modules/<包名>/` 下的许可及通知文件，
+同步附录中的包版本和原文，再检查 VSIX 中的 `extension/LICENSE.txt`。不要只依赖
+构建器保留注释；构建工具自身未进入 bundle 时无需列入发行包的依赖附录。
+上游包的通知文件应保留原文；其中提到其他项目不代表扩展另外打包了这些项目。
+
 涉及语法、诊断或 LSP 时，按 README 和 `LSP.md` 做实际编辑器验证，并说明所用 Xu 编译器版本。仅治理文件修订时检查文档、链接、表单、模板一致性与打包排除规则即可。
 
 ## 提交 PR
