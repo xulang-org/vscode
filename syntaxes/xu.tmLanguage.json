@@ -30,6 +30,9 @@
       "include": "#flow_ops"
     },
     {
+      "include": "#phase_c_markers"
+    },
+    {
       "include": "#modifiers"
     },
     {
@@ -249,6 +252,22 @@
             "3": {
               "name": "string.unquoted.import.xu"
             }
+          }
+        }
+      ]
+    },
+    "phase_c_markers": {
+      "comment": "Phase C mutability markers: `$name` (mutable binding) and `$&` (mutable borrow). Legacy `mut` / `&mut` stay in #modifiers while the compiler still accepts them.",
+      "patterns": [
+        {
+          "match": "\\$&",
+          "name": "storage.modifier.xu"
+        },
+        {
+          "match": "(\\$)([A-Za-z_][A-Za-z0-9_]*)\\b",
+          "captures": {
+            "1": { "name": "storage.modifier.xu" },
+            "2": { "name": "variable.other.mutable.xu" }
           }
         }
       ]

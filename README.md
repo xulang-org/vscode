@@ -22,7 +22,9 @@ brackets, auto-closing pairs) work independently of the external Xu compiler.
 - Keywords (`src/xu/ast/kind.xu` `lookup_keyword`):
   - control: `fn if else for in while match xu select or as is let`
   - declarations: `struct enum chan map any`
-  - modifiers: `mut pub` · other: `const`
+  - modifiers: `pub` · other: `const`
+  - Phase C mutability markers: `$name` (mutable binding), `$&` (mutable borrow)
+  - legacy `mut` / `&mut` still highlighted (compiler compatibility period)
   - primitives: `int bool string f64 i32 u32 u8 byte`
   - **not** keywords: `interface` `module` `import` `return` `break` `continue` `Ok` `Err`
 - Functions: `fn name(` / `fn (recv T) name(` / generics `fn f#T(`
